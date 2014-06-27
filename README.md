@@ -1,4 +1,4 @@
-# Passport-Azure-OAuth
+# Passport-Adfs-OAuth
 
 [Passport](http://passportjs.org/) strategy for authenticating with [Azure](https://login.windows.net/common/oauth2) OAuth 2.0 API.
 
@@ -19,16 +19,12 @@ accepts these credentials and calls `done` providing a user, as well as
 `options` specifying a client ID, client secret, tenant id, resource and redirect URL.
 
     passport.use(new AzureOAuthStrategy({
-        clientId	: AzureOAuth_ClientId,
-    	clientSecret: AzureOAuth_ClientSecret,
-		tenantId 	: AzureOAuth_AppTenantId,
-		resource 	: AzureOAuth_AuthResource,
-		redirectURL : AzureOAuth_RedirectURL,
-		proxy : {
-			host : 'myProxyHost',
-			port : 'myProxyPort',
-			protocol : 'https' // http / https
-		}
+        loginUrl: EXAMPLE_URL,
+        clientId	: EXAMPLE_CLIENT_ID,
+    	clientSecret: EXAMPLE_CLIENT_SECRET,
+		tenantId 	: '',
+		resource 	: EXAMPLE_CLIENT_RESOURCE,
+		redirectURL : EXAMPLE_CALLBACK_RedirectURL
       },
       function(accessToken, refreshToken, profile, done) {
       	return done(err, user);
@@ -43,7 +39,7 @@ accepts these credentials and calls `done` providing a user, as well as
 * redirectURL : The redirect url after the authentication. </br>
 You can pass additional parameters to your "passport use", to work with them in your callback action.
 All parameters given in the new AzureOAuthStrategy({ }) will be passed to your redirectURL.
-E.g 
+E.g
 	```javascript  
 
         clientId	: AzureOAuth_ClientId,
@@ -62,7 +58,7 @@ E.g
 	```  
 
 The callback url looks like <br>
-	
+
 	"redirectURL + '?redirectUrl=' + redirectUrl + "&" + myParameter="Im a parameter"
 
 * The proxy settings passed through the oauth2 module, wich handles the authorization requests.
@@ -82,10 +78,10 @@ application:
         // this function will not be called.
       });
 
-    app.get('/auth/azureOAuth/callback', 
-      passport.authenticate('azureOAuth', { 
+    app.get('/auth/azureOAuth/callback',
+      passport.authenticate('azureOAuth', {
 		failureRedirect: '/login',
-		refreshToken: azureOAuth_RefreshToken 
+		refreshToken: azureOAuth_RefreshToken
 	  }),
       function(req, res) {
         // Successful authentication, redirect home.
