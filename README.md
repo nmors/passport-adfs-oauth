@@ -13,12 +13,12 @@ By plugging into Passport, Azure / Office 365 authentication can be easily and u
 
 #### Configure Strategy
 
-The Azure authentication strategy authenticates users using a Azure / Microsoft Office 365
+The ADFS OAuth authentication strategy authenticates users using a Microsoft ADFS
 account using OAuth 2.0.  The strategy requires a `verify` callback, which
 accepts these credentials and calls `done` providing a user, as well as
 `options` specifying a client ID, client secret, tenant id, resource and redirect URL.
 
-    passport.use(new AzureOAuthStrategy({
+    passport.use(new ADFSOAuthStrategy({
         loginUrl: EXAMPLE_URL,
         clientId	: EXAMPLE_CLIENT_ID,
     	clientSecret: EXAMPLE_CLIENT_SECRET,
@@ -33,20 +33,17 @@ accepts these credentials and calls `done` providing a user, as well as
 
 * clientId : Id of the registered azure online application.
 * clientSecret : Password of the registered azure online application.
-* tenantId : Open Azure Online, navigate to the application, click on "VIEW ENDPOINTS", copy the GUID after the host url.
-* resource : Url to the Azure / Office 365 resource your app wants to access.
-	* e.g.: "https://outlook.office365.com/" to access Office 365 Mail Api
-* redirectURL : The redirect url after the authentication. </br>
-You can pass additional parameters to your "passport use", to work with them in your callback action.
-All parameters given in the new AzureOAuthStrategy({ }) will be passed to your redirectURL.
+* tenantId : Not needed for ADFS
+* resource : The resource server that the Client wants an access token to, as registered in the Identifier parameter of the Relying Party trust.
+* redirectURL : The redirect uri that is associated with the Client. Must match the RedirectUri value associated with the Client in ADFS.
 E.g
 	```javascript  
 
-        clientId	: AzureOAuth_ClientId,
-    	clientSecret: AzureOAuth_ClientSecret,
-		tenantId 	: AzureOAuth_AppTenantId,
-		resource 	: AzureOAuth_AuthResource,
-		redirectURL : AzureOAuth_RedirectURL,
+        clientId	: ADFSOAuth_ClientId,
+    	clientSecret: ADFSOAuth_ClientSecret,
+		tenantId 	: ADFSOAuth_AppTenantId,
+		resource 	: ADFSOAuth_AuthResource,
+		redirectURL : ADFSOAuth_RedirectURL,
 		proxy : {
 			host : 'myProxyHost',
 			port : 'myProxyPort',
@@ -65,23 +62,23 @@ The callback url looks like <br>
 
 #### Authenticate Requests
 
-Use `passport.authenticate()`, specifying the `'azureOAuth'` strategy, to
+Use `passport.authenticate()`, specifying the `'adfsoauth'` strategy, to
 authenticate requests.
 
 For example, as route middleware in an [Express](http://expressjs.com/)
 application:
 
-    app.get('/auth/azureOAuth',
-      passport.authenticate('azureOAuth'),
+    app.get('/auth/adfsoauth',
+      passport.authenticate('adfsoauth'),
       function(req, res){
         // The request will be redirected to SharePoint for authentication, so
         // this function will not be called.
       });
 
-    app.get('/auth/azureOAuth/callback',
-      passport.authenticate('azureOAuth', {
+    app.get('/auth/adfsauth/callback',
+      passport.authenticate('adfsoauth', {
 		failureRedirect: '/login',
-		refreshToken: azureOAuth_RefreshToken
+		refreshToken: ADFSOAuth_RefreshToken
 	  }),
       function(req, res) {
         // Successful authentication, redirect home.
@@ -99,7 +96,7 @@ application:
 
 (The MIT License)
 
-Copyright (c) 2013 Thomas Herbst / QuePort
+Copyright (c) 2013
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
