@@ -1,14 +1,14 @@
 {
   "name": "passport-azure-oauth",
-  "description": "Azure OAuth2 strategy für Passport and node.js",
-  "version": "0.0.3",
+  "description": "ADFS OAuth2 strategy for Passport and node.js",
+  "version": "0.0.2",
   "directories": {
     "lib": "./lib"
   },
-  "main": "./lib/passport-azure-oauth",
+  "main": "./lib/passport-adfs-oauth",
   "author": {
-    "name": "Thomas Herbst",
-    "email": "thomas.herbst@queport.com"
+    "name": "University of Cincinnati",
+    "email": "opensource@uc.edu"
   },
   "dependencies": {
     "pkginfo": "0.2.x",
@@ -19,12 +19,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://github.com/QuePort/passport-azure-oauth.git"
+    "url": "https://github.com/University-Of-Cincinnati/passport-adfs-oauth"
   },
   "engines": { "node": ">= 0.4.0" },
   "licenses": [ {
     "type": "MIT",
-    "url": "http://www.opensource.org/licenses/MIT" 
+    "url": "http://www.opensource.org/licenses/MIT"
   } ],
-  "keywords": ["passport", "oauth", "oauth2", "auth", "authn", "authentication", "azure", "exchange"]
+  "keywords": ["passport", "oauth", "oauth2", "auth", "authn", "authentication", "adfs", "exchange"]
 }
