@@ -1,19 +1,19 @@
 # Passport-Adfs-OAuth
 
-[Passport](http://passportjs.org/) strategy for authenticating with [Azure](https://login.windows.net/common/oauth2) OAuth 2.0 API.
+[Passport](http://passportjs.org/) strategy for authenticating with the ADFS 3.0 OAuth 2.0 API.
 
-This module lets you authenticate using Azure in your Node.js applications.
-By plugging into Passport, Azure / Office 365 authentication can be easily and unobtrusively integrated into any application or framework that supports [Connect](http://www.senchalabs.org/connect/)-style middleware, including [Express](http://expressjs.com/).
+This module lets you authenticate using ADFS 3.0 in your Node.js applications.
+By plugging into Passport, ADFS 3.0 authentication can be easily and unobtrusively integrated into any application or framework that supports [Connect](http://www.senchalabs.org/connect/)-style middleware, including [Express](http://expressjs.com/).
 
 ## Installation
 
-    $ npm install passport-azure-oauth
+    $ npm install passport-adfs-oauth
 
 ## Usage
 
 #### Configure Strategy
 
-The ADFS OAuth authentication strategy authenticates users using a Microsoft ADFS
+The ADFS OAuth authentication strategy authenticates users using a Microsoft ADFS 3.0
 account using OAuth 2.0.  The strategy requires a `verify` callback, which
 accepts these credentials and calls `done` providing a user, as well as
 `options` specifying a client ID, client secret, tenant id, resource and redirect URL.
