@@ -87,7 +87,7 @@ application:
 
 * refreshToken : After one initial authentication, you get a refresh token. You can pass it to the authenticate method to simply renew your access token without a new callback.
 ## Credits
-
+  - [University of Cincinnati](https://github.com/University-Of-Cincinnati)
   - [QuePort](https://github.com/QuePort)
   - [Thomas Herbst](https://github.com/macrauder)
   - [Tobias Winkler](https://github.com/Tschuck)
