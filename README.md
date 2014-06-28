@@ -1,6 +1,6 @@
 # Passport-Adfs-OAuth
 
-[Passport](http://passportjs.org/) strategy for authenticating with the ADFS 3.0 OAuth 2.0 API.
+[Passport](http://passportjs.org/) strategy for authenticating with the [ADFS 3.0 OAuth 2.0 API] (https://github.com/nordvall/TokenClient/wiki/OAuth-2-in-ADFS).
 
 This module lets you authenticate using ADFS 3.0 in your Node.js applications.
 By plugging into Passport, ADFS 3.0 authentication can be easily and unobtrusively integrated into any application or framework that supports [Connect](http://www.senchalabs.org/connect/)-style middleware, including [Express](http://expressjs.com/).
